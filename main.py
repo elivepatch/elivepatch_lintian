@@ -4,6 +4,7 @@
 
 import argparse
 import urllib.request
+from analyze import checks
 
 
 def build_argparser():
@@ -28,11 +29,15 @@ def cmd_a(patch_id):
     print('Downloading patch from the kernel repository...')
     url = 'https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/patch/?id=' + patch_id
     urllib.request.urlretrieve(url, '/tmp/temporary.patch')  
+    commit_check = checks()
+    commit_check.parse()
 
 
 def cmd_b(args):
     print ("Opening local patch file")
     print (args)
+    file_check = checks(args)
+    file_check.parse()
 
 
 def main():
