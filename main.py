@@ -35,7 +35,6 @@ def cmd_a(patch_id):
 
 def cmd_b(args):
     print ("Opening local patch file")
-    print (args)
     file_check = checks(args)
     file_check.parse()
 
